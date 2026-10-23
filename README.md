@@ -30,7 +30,7 @@
 使用 DSH 官方的 profile 插件命令，直接安装钉住的预构建版本：
 
 ```sh
-dsh plugin --profile web add github:taotao7/dsh-pretty-cool#PENDING_COMMIT
+dsh plugin --profile web add github:taotao7/dsh-pretty-cool#a1bea8597ecb45d4cdcb3747dbf1d232d2f74462
 ```
 
 也可以从 [Releases](https://github.com/taotao7/dsh-pretty-cool/releases/latest) 下载 `local-dsh-linear-ui-1.4.11.tgz`，再安装本地包：
