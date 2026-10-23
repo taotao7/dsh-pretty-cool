@@ -5,11 +5,12 @@ import { LayoutGroup, motion } from 'motion/react';
 import { Button, Icon, MotionBoundary, useCalmMotion } from './primitives';
 import type { ClientContext, Panel, SidebarProps } from './contracts';
 import css from './sidebar.css';
+import { DEFAULT_RADIUS, MAX_RADIUS, setRadius, useRadius } from './radius';
 
 const NS = 'linear-ui';
 const dictionaries = {
-  en: { 'session.new':'New session', 'toggle.open':'Open sidebar', 'toggle.collapse':'Collapse sidebar', 'panels.label':'Global panels', 'navigation.label':'Workspace navigation', 'conversation':'Conversation', 'workspace.caption':'YOUR WORKSPACE', 'appearance':'Appearance', 'appearance.light':'Light', 'appearance.dark':'Dark', 'appearance.system':'System', 'text.size':'Text size', 'text.smaller':'Decrease text size', 'text.larger':'Increase text size' },
-  zh: { 'session.new':'新建会话', 'toggle.open':'展开侧栏', 'toggle.collapse':'收起侧栏', 'panels.label':'全局面板', 'navigation.label':'工作区导航', 'conversation':'返回对话', 'workspace.caption':'工作空间', 'appearance':'外观', 'appearance.light':'浅色', 'appearance.dark':'深色', 'appearance.system':'跟随系统', 'text.size':'字号', 'text.smaller':'减小字号', 'text.larger':'增大字号' },
+  en: { 'session.new':'New session', 'toggle.open':'Open sidebar', 'toggle.collapse':'Collapse sidebar', 'panels.label':'Global panels', 'navigation.label':'Workspace navigation', 'conversation':'Conversation', 'workspace.caption':'YOUR WORKSPACE', 'appearance':'Appearance', 'appearance.light':'Light', 'appearance.dark':'Dark', 'appearance.system':'System', 'text.size':'Text size', 'text.smaller':'Decrease text size', 'text.larger':'Increase text size', 'radius.label':'Corners', 'radius.less':'Decrease corner radius', 'radius.more':'Increase corner radius', 'radius.reset':'Reset corner radius to 6', 'radius.hint':'Base radius in px; controls and panels scale proportionally' },
+  zh: { 'session.new':'新建会话', 'toggle.open':'展开侧栏', 'toggle.collapse':'收起侧栏', 'panels.label':'全局面板', 'navigation.label':'工作区导航', 'conversation':'返回对话', 'workspace.caption':'工作空间', 'appearance':'外观', 'appearance.light':'浅色', 'appearance.dark':'深色', 'appearance.system':'跟随系统', 'text.size':'字号', 'text.smaller':'减小字号', 'text.larger':'增大字号', 'radius.label':'圆角', 'radius.less':'减小圆角', 'radius.more':'增大圆角', 'radius.reset':'恢复默认圆角 6', 'radius.hint':'基准圆角（px），控件与面板按比例调整' },
 };
 function PanelRow({ id, label, usePanelInfo, selectPanel, renderSlot }: Pick<SidebarProps, 'usePanelInfo' | 'selectPanel' | 'renderSlot'> & { id: string; label: string }) {
   const active = usePanelInfo(info => info.activePanelId === id);
@@ -24,6 +25,7 @@ function PanelRow({ id, label, usePanelInfo, selectPanel, renderSlot }: Pick<Sid
 function Appearance({ useTheme, setTheme, setTextSize, t }: Pick<SidebarProps, 'useTheme' | 'setTheme' | 'setTextSize' | 't'>) {
   const preference = useTheme(state => state.preference);
   const fontSize = useTheme(state => state.fontSizes.text);
+  const radius = useRadius();
   const reduced = useCalmMotion();
   const id = useId();
   return <div className="dlu-appearance">
@@ -36,6 +38,7 @@ function Appearance({ useTheme, setTheme, setTextSize, t }: Pick<SidebarProps, '
       </Button>)}
     </div></LayoutGroup>
     <div className="dlu-type-controls"><span>{t('text.size')}</span><div role="group" aria-label={t('text.size')}><Button aria-label={t('text.smaller')} title={t('text.smaller')} disabled={fontSize <= 10} onClick={()=>setTextSize(fontSize-1)}>A−</Button><output aria-live="polite">{fontSize}</output><Button aria-label={t('text.larger')} title={t('text.larger')} disabled={fontSize >= 22} onClick={()=>setTextSize(fontSize+1)}>A+</Button></div></div>
+    <div className="dlu-type-controls"><span>{t('radius.label')}</span><div role="group" aria-label={t('radius.label')} title={t('radius.hint')}><Button aria-label={t('radius.less')} title={t('radius.less')} disabled={radius <= 0} onClick={()=>setRadius(radius-1)}>−</Button><output aria-live="polite">{radius}</output><Button aria-label={t('radius.more')} title={t('radius.more')} disabled={radius >= MAX_RADIUS} onClick={()=>setRadius(radius+1)}>+</Button><Button aria-label={t('radius.reset')} title={t('radius.reset')} disabled={radius === DEFAULT_RADIUS} onClick={()=>setRadius(DEFAULT_RADIUS)}>↺</Button></div></div>
   </div>;
 }
 function SidebarContent(props: SidebarProps) {

@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ClientContext, Selector } from './contracts';
 import css from './dashboard.css';
+import refinements from './refinements.css';
 
 interface Pressure { pressureTokens?:number; projectedTokens?:number; contextWindow?:number }
 interface SessionList { byId:Record<string,{cwd?:string}> }
@@ -33,7 +34,7 @@ function PromptContext({sessionId,useSessions,useProjection,t}:ContextProps){
     {percent!==undefined&&<span className="dlu-context-line" aria-hidden="true" data-pressure={percent>=90?'high':'normal'}><i style={{width:`${percent}%`}}/></span>}
   </>;
 }
-function Styles(){return <style>{css}</style>;}
+function Styles(){return <style>{css+'\n'+refinements}</style>;}
 export function registerDashboard(ctx:ClientContext){
   ctx.effect(()=>ctx.locale.register(NS,dictionaries),'linear-ui: dashboard locale');
   ctx.slots.inject('shell.overlay',()=>ctx.slots.register({name:'shell.overlay',id:'linear-ui.dashboard-styles'},Styles));

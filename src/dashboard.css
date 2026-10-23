@@ -13,38 +13,43 @@ header:has(.dlu-header-marker) nav > span > span {font-size:12px;}
 .dlu-prompt-directory {display:inline-flex;align-items:center;gap:6px;min-width:0;max-width:240px;color:var(--dsw-alias-label-secondary);font-size:12px;line-height:20px;grid-column:1;}
 .dlu-prompt-directory svg {flex:none;}
 .dlu-prompt-directory > span {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
-.dlu-context-line {position:absolute;inset:0 12px auto;height:2px;overflow:hidden;border-radius:2px;pointer-events:none;background:var(--dsw-alias-border-l1);}
+.dlu-context-line {position:absolute;inset:0 88px auto 12px;height:2px;overflow:hidden;border-radius:calc(2px * var(--dlu-radius-scale,1));pointer-events:none;background:var(--dsw-alias-border-l1);}
 .dlu-context-line i {display:block;height:100%;background:var(--dsw-alias-brand-primary);opacity:.75;transition:width 180ms ease-out;}
 .dlu-context-line[data-pressure=high] i {background:var(--dsw-alias-state-error-primary);}
-div:has(> [data-composer-card]):has(.dlu-context-line) {position:relative;border-radius:12px;}
-[data-composer-card]:has(.dlu-model-controls) {border-radius:11px 11px 0 0;padding-top:8px;gap:4px;}
+/* A transparent readout straddles the top edge; mask only its 80px gap.
+   The outline owns no pointer events and inherits the scaled frame corners. */
+div:has(> [data-composer-card]):has(.dlu-context-line) {--dlu-frame-border:var(--dsw-alias-border-l2);position:relative;border-color:transparent;border-radius:calc(12px * var(--dlu-radius-scale,1));box-shadow:none;}
+div:has(> [data-composer-card]):has(.dlu-context-line)::before {content:'';position:absolute;inset:-1px;pointer-events:none;border:1px solid var(--dlu-frame-border);border-radius:inherit;mask:linear-gradient(#000 0 0) bottom / 100% calc(100% - 12px) no-repeat,linear-gradient(to right,#000 calc(100% - 88px),transparent calc(100% - 88px),transparent calc(100% - 8px),#000 calc(100% - 8px)) top / 100% 12px no-repeat;}
+[data-composer-card]:has(.dlu-model-controls) {border-radius:calc(11px * var(--dlu-radius-scale,1)) calc(11px * var(--dlu-radius-scale,1)) 0 0;padding-top:8px;gap:4px;}
 [data-composer-card] > div:has(.dlu-model-controls) {padding-bottom:4px;}
-[data-composer-dock]:has(.dlu-prompt-directory) {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));align-items:center;padding:2px 12px 3px;gap:4px 12px;background:transparent;border-top:1px solid color-mix(in srgb,var(--dsw-alias-border-l1) 55%,transparent);border-radius:0 0 11px 11px;}
+[data-composer-dock]:has(.dlu-prompt-directory) {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));align-items:center;padding:2px 12px 3px;gap:4px 12px;background:transparent;border-top:1px solid color-mix(in srgb,var(--dsw-alias-border-l1) 55%,transparent);border-radius:0 0 calc(11px * var(--dlu-radius-scale,1)) calc(11px * var(--dlu-radius-scale,1));}
 [data-composer-stat=activity] {grid-column:auto;}
 [data-composer-stat=usage] {grid-column:-2 / -1;}
 [data-composer-stat] {min-width:0;max-width:100%;justify-self:end;}
 [data-composer-stat] button {max-width:100%;}
 [data-composer-stat] button > span {min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 [data-composer-dock] button {font-size:11px;}
-[data-composer-stat] button {border-radius:5px;color:var(--dsw-alias-label-secondary);}
+[data-composer-stat] button {border-radius:calc(5px * var(--dlu-radius-scale,1));color:var(--dsw-alias-label-secondary);}
 [data-composer-stat=activity] button {color:var(--dsw-alias-label-tertiary);}
 [data-composer-stat] button:hover,[data-composer-stat] button[aria-expanded=true] {color:var(--dsw-alias-label-primary);background:var(--dsw-alias-bg-layer-2);}
-[data-composer-dock]:has(.dlu-prompt-directory) > span:has(> button[aria-haspopup=dialog]) {position:absolute;top:-23px;right:12px;margin:0;padding:0;background:transparent;border-radius:0;}
+[data-composer-dock]:has(.dlu-prompt-directory) > span:has(> button[aria-haspopup=dialog]) {position:absolute;top:-10px;right:12px;width:72px;margin:0;padding:0;background:transparent;border-radius:0;}
 [data-composer-dock]:has(.dlu-prompt-directory) > span > button {min-height:20px;height:20px;font-size:11px;background:transparent;}
+[data-composer-dock]:has(.dlu-prompt-directory) > span > button[aria-haspopup=dialog] {box-sizing:border-box;width:72px;justify-content:center;gap:4px;padding:0 4px;white-space:nowrap;}
 [data-composer-dock]:has(.dlu-prompt-directory) > span > button:hover,
 [data-composer-dock]:has(.dlu-prompt-directory) > span > button[aria-expanded=true] {background:transparent;color:var(--dsw-alias-label-primary);}
-div:has(> [data-composer-card]):has(.dlu-context-line):focus-within {border-color:var(--dsw-alias-border-l2);box-shadow:0 0 0 1px color-mix(in srgb,var(--dsw-alias-brand-primary) 10%,transparent);}
-[data-testid=todo-panel] {background:transparent;box-shadow:none;backdrop-filter:none;border-radius:4px;}
+div:has(> [data-composer-card]):has(.dlu-context-line):focus-within {--dlu-frame-border:color-mix(in srgb,var(--dsw-alias-brand-primary) 65%,var(--dsw-alias-border-l2));border-color:transparent;box-shadow:none;}
+[data-testid=todo-panel] {width:fit-content;min-width:0;max-width:min(100%,360px);align-self:start;justify-self:start;box-sizing:border-box;background:transparent;box-shadow:none;backdrop-filter:none;border-radius:calc(4px * var(--dlu-radius-scale,1));}
 [data-testid=todo-panel] > div {padding:0 6px;gap:4px;}
-[data-testid=todo-panel] button[aria-expanded] {width:fit-content;max-width:100%;gap:6px;min-height:28px;border-radius:6px;padding:2px 6px;}
+[data-testid=todo-panel] button[aria-expanded] {width:fit-content;max-width:100%;gap:6px;min-height:28px;border-radius:calc(6px * var(--dlu-radius-scale,1));padding:2px 6px;}
 [data-testid=todo-panel] button[aria-expanded]:hover {background:var(--dsw-alias-bg-layer-2);}
-[data-testid=todo-panel]:has(button[aria-expanded=true]) {background:var(--dsw-alias-bg-layer-1);box-shadow:inset 0 0 0 1px var(--dsw-alias-border-l1);border-radius:7px;}
+[data-testid=todo-panel]:has(button[aria-expanded=true]) {background:var(--dsw-alias-bg-layer-1);box-shadow:inset 0 0 0 1px var(--dsw-alias-border-l1);border-radius:calc(7px * var(--dlu-radius-scale,1));}
 [data-testid=todo-panel]:has(button[aria-expanded=true]) > div {padding:5px 8px;}
 [data-testid=todo-panel] button[aria-expanded]:focus-visible {outline:2px solid var(--dsw-alias-brand-primary);outline-offset:1px;}
 [data-testid=todo-panel] button[aria-expanded] > span {font-size:11px;line-height:20px;}
-[data-testid=todo-panel] ul {max-height:140px;gap:4px;padding:4px 0 6px;}
-[data-testid=todo-panel] li {font-size:12px;line-height:20px;}
-[data-goal-bar] {background:transparent;box-shadow:none;backdrop-filter:none;border-radius:4px;min-height:24px;font-size:11px;}
+[data-testid=todo-panel] ul {box-sizing:border-box;max-height:120px;overflow-y:auto;gap:2px;padding:2px 0;}
+[data-testid=todo-panel] li {font-size:12px;line-height:18px;gap:6px;}
+[data-testid=todo-panel] li > span:last-child {min-width:0;white-space:normal;overflow-wrap:anywhere;overflow:visible;text-overflow:clip;}
+[data-goal-bar] {background:transparent;box-shadow:none;backdrop-filter:none;border-radius:calc(4px * var(--dlu-radius-scale,1));min-height:24px;font-size:11px;}
 [data-goal-bar] > div {max-width:none;box-shadow:none;gap:6px;padding-inline:6px;}
 [data-goal-bar] > div::before {background:transparent;backdrop-filter:none;}
 [data-goal-bar] > div:not(:has(textarea)) {height:26px;padding-block:1px;}
@@ -56,15 +61,15 @@ div:has(> [data-composer-card]):has(.dlu-context-line):focus-within {border-colo
   /* A header's main conversation owns this scope. Embedded right-pane chats
      cannot become the anchor for the main session's status controls. */
   div:has(> [data-slot="conversation.header"]):has(.dlu-header-marker) {anchor-scope:--dlu-status;}
-  div:has(> [data-slot="conversation.header"]):has(.dlu-header-marker) > [data-conversation-content] > [data-conversation-scroll] > [data-composer-seat] .dlu-status-rail {display:block;anchor-name:--dlu-status,--dlu-global-status;width:var(--dlu-status-width,212px);min-height:32px;grid-column:2;grid-row:2;align-self:end;}
+  div:has(> [data-slot="conversation.header"]):has(.dlu-header-marker) > [data-conversation-content] > [data-conversation-scroll] > [data-composer-seat] .dlu-status-rail {display:block;anchor-name:--dlu-status,--dlu-global-status;width:var(--dlu-status-width,212px);min-height:32px;grid-column:2;grid-row:2;align-self:start;}
   div:has(> [data-slot="conversation.header"]):has(.dlu-header-marker) > [data-conversation-content] > [data-conversation-scroll] > [data-composer-seat] div:has(> div > .dlu-status-rail) {display:grid;grid-template-columns:minmax(0,1fr) var(--dlu-status-width,212px);gap:0 8px;box-sizing:border-box;width:calc(100% - 2 * var(--dsh-composer-side-clearance));max-width:var(--dsh-composer-card-max-width);margin-inline:auto;}
   div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) > div > * {grid-column:1 / -1;}
-  div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) [data-testid=todo-panel] {grid-column:1;grid-row:2;width:100%;max-width:none;margin:0;align-self:center;}
+  div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) [data-testid=todo-panel] {grid-column:1;grid-row:2;margin:0;}
   div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) [data-goal-bar] {grid-column:1 / -1;grid-row:1;width:100%;max-width:none;margin:0;}
   div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) [data-queue-dock] {grid-column:1 / -1;grid-row:3;}
-  div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) div:has(> [data-composer-card]) {grid-column:1 / -1;grid-row:4;order:100;width:100%;margin-top:24px;margin-bottom:8px;}
+  div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) div:has(> [data-composer-card]) {grid-column:1 / -1;grid-row:4;order:100;width:100%;margin-top:12px;margin-bottom:8px;}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] {position:fixed;position-anchor:--dlu-status;top:anchor(top);right:anchor(right);position-visibility:anchors-visible;display:flex!important;align-items:center;justify-content:flex-end;gap:5px;z-index:30;min-height:32px;}
-  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label] {position:relative;box-sizing:border-box;width:32px;min-width:32px;height:32px;min-height:32px;justify-content:center;gap:0;padding:5px;border:1px solid transparent;border-radius:7px;font-size:0;color:var(--dsw-alias-label-secondary);}
+  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label] {position:relative;box-sizing:border-box;width:32px;min-width:32px;height:32px;min-height:32px;justify-content:center;gap:0;padding:5px;border:1px solid transparent;border-radius:calc(7px * var(--dlu-radius-scale,1));font-size:0;color:var(--dsw-alias-label-secondary);}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label]:hover {color:var(--dsw-alias-label-primary);background:var(--dsw-alias-bg-layer-2);}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-expanded=true] {color:var(--dsw-alias-brand-text);background:var(--dsw-alias-interactive-bg-active);border-color:var(--dsw-alias-border-l1);}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label]:focus-visible {outline:2px solid var(--dsw-alias-brand-primary);outline-offset:2px;}
@@ -72,15 +77,18 @@ div:has(> [data-composer-card]):has(.dlu-context-line):focus-within {border-colo
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] > span[title] > svg {display:none;}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label] > span:last-of-type {display:none;}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label]:not([aria-expanded=true]):hover::after,
-  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label]:focus-visible::after {content:attr(aria-label);position:absolute;bottom:calc(100% + 7px);right:0;width:max-content;max-width:240px;padding:5px 8px;border:1px solid var(--dsw-alias-border-l2);border-radius:5px;background:var(--dsw-alias-bg-overlay);color:var(--dsw-alias-label-primary);font:11px/16px sans-serif;white-space:normal;pointer-events:none;z-index:100;}
+  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label]:focus-visible::after {content:attr(aria-label);position:absolute;bottom:calc(100% + 7px);right:0;width:max-content;max-width:240px;padding:5px 8px;border:1px solid var(--dsw-alias-border-l2);border-radius:calc(5px * var(--dlu-radius-scale,1));background:var(--dsw-alias-bg-overlay);color:var(--dsw-alias-label-primary);font:11px/16px sans-serif;white-space:normal;pointer-events:none;z-index:100;}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-haspopup=tree] > svg,
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-expanded]:not([aria-haspopup]) > svg {display:none;}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-haspopup=tree]::before,
-  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-expanded]:not([aria-haspopup])::before {content:'';display:block;flex:none;width:17px;height:17px;background:currentColor;mask-size:contain;mask-position:center;mask-repeat:no-repeat;}
+  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-expanded]:not([aria-haspopup])::before {content:'';display:block;flex:none;width:16px;height:16px;background:currentColor;mask-size:contain;mask-position:center;mask-repeat:no-repeat;}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-haspopup=tree]::before {mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='6' cy='5' r='2.5'/%3E%3Ccircle cx='18' cy='8' r='2.5'/%3E%3Ccircle cx='6' cy='19' r='2.5'/%3E%3Cpath d='M6 7.5v9M8.5 14H12a6 6 0 0 0 6-3.5'/%3E%3C/svg%3E");}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-expanded]:not([aria-haspopup])::before {mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='3'/%3E%3Cpath d='m7 9 3 3-3 3m6 0h4'/%3E%3C/svg%3E");}
-  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-expanded]:not([aria-haspopup]) > svg:first-child:not(:last-child) {display:block;position:absolute;right:0;top:0;width:10px;height:10px;}
-  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label] > span:first-of-type:not(:last-of-type) {position:absolute;right:0;top:0;}
+  /* In a 32px button the centered 16px glyph starts at y=8; the 8px
+     corner indicator ends there, so their drawing areas never overlap. */
+  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-expanded]:not([aria-haspopup]) > svg:first-child:not(:last-child) {display:block;position:absolute;right:-1px;top:-1px;width:8px;height:8px;}
+  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-haspopup=tree] > span:first-of-type:not(:last-of-type) {position:absolute;right:-1px;top:-1px;display:flex;align-items:center;justify-content:center;width:8px;height:8px;min-width:0;line-height:0;}
+  header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-haspopup=tree] > span:first-of-type:not(:last-of-type) > svg {display:block;width:8px;height:8px;}
   body:has(.dlu-header-marker):has([data-slot="conversation.session.header.actions"] [data-team-action]) > [data-team-panel],
   body:has(.dlu-header-marker):has([data-slot="conversation.session.header.actions"] button[aria-haspopup=tree][aria-expanded=true]) > div:has(> [role=tree]),
   body:has(.dlu-header-marker):has([data-slot="conversation.session.header.actions"] button[aria-expanded=true]:not([aria-haspopup])) > div:has(> ul[aria-label]) {

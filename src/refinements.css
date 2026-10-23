@@ -1,0 +1,38 @@
+/* Compact native queue and activity surfaces. No message or queue ownership. */
+body:has(.dlu-header-marker) [data-queue-dock] {box-sizing:border-box;width:100%;max-width:none;margin:6px 0 0;padding:0 8px;}
+body:has(.dlu-header-marker) [data-queue-dock] > div {border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;overflow:visible;}
+body:has(.dlu-header-marker) [data-queue-dock] > div > button[aria-expanded] {min-height:28px;padding:3px 2px;gap:7px;border:0;border-radius:calc(4px * var(--dlu-radius-scale,1));background:transparent;color:var(--dsw-alias-label-secondary);font-size:11px;line-height:20px;font-weight:500;}
+body:has(.dlu-header-marker) [data-queue-dock] > div > button[aria-expanded]:hover {background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary);}
+body:has(.dlu-header-marker) [data-queue-dock] > div > ul:not([hidden]) {box-sizing:border-box;max-height:144px;overflow-y:auto;overscroll-behavior:contain;gap:0;margin:0;padding:0;scrollbar-width:thin;}
+body:has(.dlu-header-marker) [data-queue-dock] > div > ul > li {box-sizing:border-box;min-height:34px;padding:4px 2px;gap:8px;border:0;border-radius:0;box-shadow:none;background:transparent;font-size:12px;line-height:18px;}
+body:has(.dlu-header-marker) [data-queue-dock] > div > ul > li + li {border-top:1px solid color-mix(in srgb,var(--dsw-alias-border-l1) 55%,transparent);}
+body:has(.dlu-header-marker) [data-queue-dock] [class$="_preview"] {min-width:0;font-size:12px;line-height:18px;color:var(--dsw-alias-label-secondary);}
+body:has(.dlu-header-marker) [data-queue-dock] [class$="_attachments"] {gap:4px;max-width:160px;}
+body:has(.dlu-header-marker) [data-queue-dock] [class$="_thumb"] {width:24px;height:24px;border-radius:calc(4px * var(--dlu-radius-scale,1));}
+body:has(.dlu-header-marker) [data-queue-dock] [class$="_file"] {max-width:140px;padding:2px 5px;border-radius:calc(4px * var(--dlu-radius-scale,1));}
+body:has(.dlu-header-marker) [data-queue-dock] [class$="_actions"] {gap:2px;align-items:center;}
+body:has(.dlu-header-marker) [data-queue-dock] [class$="_actions"] > button {width:26px;height:26px;min-width:26px;min-height:26px;padding:4px;border-radius:calc(4px * var(--dlu-radius-scale,1));color:var(--dsw-alias-label-secondary);}
+body:has(.dlu-header-marker) [data-queue-dock] [class$="_actions"] > button:not(:disabled):hover {color:var(--dsw-alias-label-primary);background:var(--dsw-alias-interactive-bg-hover);}
+body:has(.dlu-header-marker) [data-queue-dock] [class$="_actions"] > button > svg {width:14px;height:14px;}
+body:has(.dlu-header-marker) [data-queue-dock] button:focus-visible {outline:2px solid var(--dsw-alias-brand-primary);outline-offset:1px;}
+body:has(.dlu-header-marker) [data-testid=todo-panel]:has(button[aria-expanded=true]) {background:transparent;box-shadow:none;border-radius:0;}
+body:has(.dlu-header-marker) [data-testid=todo-panel]:has(button[aria-expanded=true]) > div {margin-inline-start:6px;padding:3px 8px;border-inline-start:1px solid var(--dsw-alias-border-l1);}
+body:has(.dlu-header-marker) [data-goal-bar] {color:var(--dsw-alias-label-secondary);}
+body:has(.dlu-header-marker) [data-goal-bar] button > svg {width:14px;height:14px;}
+/* The native running marker mounts only during execution, never on history. */
+body:has(.dlu-header-marker) [data-chat-running=true] {min-height:28px;margin:8px 0 12px;padding:0;color:var(--dsw-alias-label-secondary);}
+body:has(.dlu-header-marker) [data-chat-running=true] > span[aria-hidden=true] {display:none;}
+body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningContent"] {display:inline-flex;align-items:center;gap:8px;width:fit-content;min-height:28px;}
+body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningIcon"] {width:16px;height:16px;color:var(--dsw-alias-brand-primary);}
+body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningWhaleAnimated"] {display:none;}
+body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningWhaleStill"] {display:block;width:16px;height:16px;}
+body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningText"] {animation:none;background:none;color:var(--dsw-alias-label-secondary);-webkit-text-fill-color:currentColor;font-size:12px;line-height:20px;}
+body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningContent"]::after {content:"";flex:none;width:3px;height:3px;margin-inline:2px 12px;border-radius:50%;color:var(--dsw-alias-brand-primary);background:currentColor;box-shadow:6px 0 currentColor,12px 0 currentColor;opacity:.65;pointer-events:none;}
+@keyframes dlu-thinking-dots {
+  0%,100% {background:currentColor;box-shadow:6px 0 color-mix(in srgb,currentColor 25%,transparent),12px 0 color-mix(in srgb,currentColor 25%,transparent);}
+  33% {background:color-mix(in srgb,currentColor 25%,transparent);box-shadow:6px 0 currentColor,12px 0 color-mix(in srgb,currentColor 25%,transparent);}
+  66% {background:color-mix(in srgb,currentColor 25%,transparent);box-shadow:6px 0 color-mix(in srgb,currentColor 25%,transparent),12px 0 currentColor;}
+}
+@media(prefers-reduced-motion:no-preference) {body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningContent"]::after {animation:dlu-thinking-dots 1.8s ease-in-out infinite;}}
+@media(pointer:coarse) {body:has(.dlu-header-marker) [data-queue-dock] [class$="_actions"] > button {width:36px;height:36px;min-width:36px;min-height:36px;}}
+@media(max-width:700px) {body:has(.dlu-header-marker) [data-queue-dock] {padding-inline:2px;}body:has(.dlu-header-marker) [data-queue-dock] [class$="_attachments"] {max-width:64px;}}

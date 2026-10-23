@@ -9,10 +9,10 @@
 .dlu-message-header > strong {font-weight:550;color:var(--dsw-alias-label-primary);}
 .dlu-user-avatar {display:inline-flex;align-items:center;justify-content:center;flex:none;width:14px;height:14px;color:var(--dsw-alias-brand-primary);}
 .dlu-message-header > time {margin-inline-start:6px;font:10px/16px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;white-space:nowrap;}
-.dlu-message-action {border:1px solid transparent;border-radius:3px;padding:2px 5px;font:inherit;font-size:10px;color:var(--dsw-alias-label-secondary);background:transparent;cursor:pointer;transition:background-color 120ms,color 120ms;}
+.dlu-message-action {border:1px solid transparent;border-radius:calc(3px * var(--dlu-radius-scale,1));padding:2px 5px;font:inherit;font-size:10px;color:var(--dsw-alias-label-secondary);background:transparent;cursor:pointer;transition:background-color 120ms,color 120ms;}
 .dlu-message-action:hover {color:var(--dsw-alias-label-primary);background:var(--dsw-alias-interactive-bg-hover);}
 .dlu-message-action:focus-visible,.dlu-process-card:focus-visible {outline:2px solid var(--dsw-alias-brand-primary);outline-offset:3px;}
-.dlu-process-card {display:flex;align-items:center;gap:9px;box-sizing:border-box;width:100%;min-height:42px;margin:10px 0 14px;padding:8px 10px;border:1px solid var(--dsw-alias-border-l1);border-radius:4px;background:transparent;color:var(--dsw-alias-label-secondary);font-family:var(--dsw-font-family);text-align:start;cursor:pointer;transition:border-color 150ms,background-color 150ms;}
+.dlu-process-card {display:flex;align-items:center;gap:9px;box-sizing:border-box;width:100%;min-height:42px;margin:10px 0 14px;padding:8px 10px;border:1px solid var(--dsw-alias-border-l1);border-radius:calc(4px * var(--dlu-radius-scale,1));background:transparent;color:var(--dsw-alias-label-secondary);font-family:var(--dsw-font-family);text-align:start;cursor:pointer;transition:border-color 150ms,background-color 150ms;}
 .dlu-process-card:not(:disabled):hover {border-color:var(--dsw-alias-border-l2);background:var(--dsw-alias-interactive-bg-hover);}
 .dlu-process-card:disabled {cursor:default;}
 .dlu-process-icon {display:flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;color:var(--dsw-alias-brand-primary);}

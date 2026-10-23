@@ -8,16 +8,22 @@
       "name": "@local/dsh-linear-ui",
       "title": { "en": "DSH Pretty Cool", "zh": "DSH Pretty Cool" },
       "description": {
-        "en": "A compact prompt-centered layout with native token/context statistics, one-click thinking levels, flat navigation and warm light/dark surfaces. Native sessions, editor, tools and permissions stay connected. Disable the whole bundle to restore the original interface.",
-        "zh": "以 prompt 为中心的紧凑布局：原生 token/上下文统计收进输入面板，单击循环切换思考级别，搭配平面导航和暖色明暗主题。保留原生会话、编辑器、工具与权限；停用整个整合包即可恢复原界面。"
+        "en": "A carefully tuned compact interface: borderless messages, a light queue, context usage sitting on the composer line, and adjustable corners beside the theme controls. Native sessions, editor, tools and permissions stay connected.",
+        "zh": "仔细收过的紧凑界面：普通消息和队列去掉厚边框，上下文占用嵌在输入框上沿，主题旁可调全局圆角。保留原生会话、编辑器、工具与权限。"
       },
       "icon": "icon.svg",
       "author": "taotao7",
       "homepage": "https://github.com/taotao7/dsh-pretty-cool",
       "repository": { "url": "https://github.com/taotao7/dsh-pretty-cool" },
       "metadata": { "category": "ui", "keywords": ["dsh-plugin", "theme", "ui", "light", "dark"] },
-      "dist-tags": { "latest": "1.4.4" },
+      "dist-tags": { "latest": "1.4.9" },
       "versions": [
+        {
+          "version": "1.4.9",
+          "publishTimestamp": 1792756384,
+          "source": { "type": "git", "url": "https://github.com/taotao7/dsh-pretty-cool", "commit": "PENDING_COMMIT" },
+          "engines": { "dsh": "0.2.1-rc.2" }
+        },
         {
           "version": "1.4.4",
           "publishTimestamp": 1792753144,
