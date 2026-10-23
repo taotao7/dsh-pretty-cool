@@ -21,7 +21,7 @@
         {
           "version": "1.4.9",
           "publishTimestamp": 1792756384,
-          "source": { "type": "git", "url": "https://github.com/taotao7/dsh-pretty-cool", "commit": "PENDING_COMMIT" },
+          "source": { "type": "git", "url": "https://github.com/taotao7/dsh-pretty-cool", "commit": "490aad6e13b680d6404d2e93078f14075d468dca" },
           "engines": { "dsh": "0.2.1-rc.2" }
         },
         {
