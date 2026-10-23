@@ -46,9 +46,21 @@
         ]
       },
       "dist-tags": {
-        "latest": "1.4.14"
+        "latest": "1.4.15"
       },
       "versions": [
+        {
+          "version": "1.4.15",
+          "publishTimestamp": 1792765004,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/taotao7/dsh-pretty-cool",
+            "commit": "85ab51c4017a74e4458c93aeabd02d15c836bc40"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.2"
+          }
+        },
         {
           "version": "1.4.14",
           "publishTimestamp": 1792763127,
