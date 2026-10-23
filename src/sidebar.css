@@ -12,8 +12,12 @@
 .dlu-button:active {background:var(--dsw-alias-interactive-bg-active);}
 .dlu-brand-button {height:34px;width:34px;color:var(--dsw-alias-label-primary);margin-bottom:4px;padding:4px;}
 .dlu-brand-button[aria-current=page] {color:var(--dsw-alias-brand-primary);}
-.dlu-panels {display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;padding-top:4px;}
+.dlu-panels,.dlu-panel-section {display:flex;flex-direction:column;align-items:stretch;gap:2px;width:100%;min-width:0;padding-top:4px;}
+.dlu-panels {align-items:center;}
+.dlu-panel-section {box-sizing:border-box;max-height:180px;padding:2px 8px 8px;overflow:auto;}
 .dlu-panel {height:32px;width:32px;padding:5px;isolation:isolate;}
+.dlu-panel-wide {width:100%;height:auto;min-height:30px;justify-content:flex-start;gap:8px;padding:4px 7px;}
+.dlu-panel-title {min-width:0;overflow:hidden;color:inherit;font-size:12px;line-height:18px;text-overflow:ellipsis;white-space:nowrap;}
 .dlu-panel-highlight {position:absolute;inset:0;border-radius:calc(4px * var(--dlu-radius-scale,1));background:var(--dsw-specific-sidebar-nav-item-active);z-index:-1;pointer-events:none;}
 .dlu-panel[aria-current=page] {color:var(--dsw-alias-brand-primary);}
 .dlu-panel-glyph {display:flex;align-items:center;justify-content:center;width:20px;height:20px;}

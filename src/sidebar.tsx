@@ -12,13 +12,14 @@ const dictionaries = {
   en: { 'session.new':'New session', 'toggle.open':'Open sidebar', 'toggle.collapse':'Collapse sidebar', 'panels.label':'Global panels', 'navigation.label':'Workspace navigation', 'conversation':'Conversation', 'workspace.caption':'YOUR WORKSPACE', 'appearance':'Appearance', 'appearance.light':'Light', 'appearance.dark':'Dark', 'appearance.system':'System', 'text.size':'Text size', 'text.smaller':'Decrease text size', 'text.larger':'Increase text size', 'radius.label':'Corners', 'radius.less':'Decrease corner radius', 'radius.more':'Increase corner radius', 'radius.reset':'Reset corner radius to 6', 'radius.hint':'Base radius in px; controls and panels scale proportionally' },
   zh: { 'session.new':'新建会话', 'toggle.open':'展开侧栏', 'toggle.collapse':'收起侧栏', 'panels.label':'全局面板', 'navigation.label':'工作区导航', 'conversation':'返回对话', 'workspace.caption':'工作空间', 'appearance':'外观', 'appearance.light':'浅色', 'appearance.dark':'深色', 'appearance.system':'跟随系统', 'text.size':'字号', 'text.smaller':'减小字号', 'text.larger':'增大字号', 'radius.label':'圆角', 'radius.less':'减小圆角', 'radius.more':'增大圆角', 'radius.reset':'恢复默认圆角 6', 'radius.hint':'基准圆角（px），控件与面板按比例调整' },
 };
-function PanelRow({ id, label, usePanelInfo, selectPanel, renderSlot }: Pick<SidebarProps, 'usePanelInfo' | 'selectPanel' | 'renderSlot'> & { id: string; label: string }) {
+function PanelRow({ id, label, wide, usePanelInfo, selectPanel, renderSlot }: Pick<SidebarProps, 'usePanelInfo' | 'selectPanel' | 'renderSlot'> & { id: string; label: string; wide: boolean }) {
   const active = usePanelInfo(info => info.activePanelId === id);
   const reduced = useCalmMotion();
-  return <Button className="dlu-panel" aria-label={label} aria-current={active ? 'page' : undefined} title={label} onClick={() => selectPanel(id)}>
+  return <Button className={wide ? 'dlu-panel dlu-panel-wide' : 'dlu-panel'} aria-label={label} aria-current={active ? 'page' : undefined} title={label} onClick={() => selectPanel(id)}>
     {/* Pixel-Perfect's shared selection geometry, driven by the native panel state. */}
     {active && <motion.span className="dlu-panel-highlight" aria-hidden="true" layoutId={reduced ? undefined : 'selected-panel'} initial={false} transition={reduced ? { duration:0 } : { type:'spring', stiffness:450, damping:34 }} />}
-    <span className="dlu-panel-glyph" aria-hidden="true">{renderSlot('sidebar.panellist', { size:18, active }, { only:id })}</span>
+    <span className="dlu-panel-glyph" aria-hidden="true">{renderSlot('sidebar.panellist', { size:wide ? 16 : 18, active }, { only:id })}</span>
+    {wide && <span className="dlu-panel-title">{label}</span>}
     <span className="dlu-rail-dot" aria-hidden="true" />
   </Button>;
 }
@@ -59,7 +60,7 @@ function SidebarContent(props: SidebarProps) {
         {renderSlot('sidebar.brand.mark', { size:24 }, { fallback:<Icon name="mark" size={24} /> })}
       </Button>
       {!wide && <Button className="dlu-rail-new" aria-label={t('session.new')} aria-keyshortcuts={newShortcut?.aria} title={t('session.new')} onClick={() => startSession()}><Icon name="plus" size={18} /></Button>}
-      <LayoutGroup id={groupId}><nav className="dlu-panels" aria-label={t('panels.label')}>{panels.map(panel => <PanelRow key={panel.id} {...panel} usePanelInfo={usePanelInfo} selectPanel={selectPanel} renderSlot={renderSlot} />)}</nav></LayoutGroup>
+      {!wide && panels.length > 0 && <LayoutGroup id={groupId}><nav className="dlu-panels" aria-label={t('panels.label')}>{panels.map(panel => <PanelRow key={panel.id} {...panel} wide={false} usePanelInfo={usePanelInfo} selectPanel={selectPanel} renderSlot={renderSlot} />)}</nav></LayoutGroup>}
       {!wide && <div className="dlu-compact-workspaces">{workspaces}</div>}
       <div className="dlu-rail-spacer" />
       <div className="dlu-footer-actions">{renderSlot('sidebar.footer.action', { wide:false })}</div>
@@ -75,6 +76,7 @@ function SidebarContent(props: SidebarProps) {
         <span className="dlu-plus-box"><Icon name="plus" size={15} /></span><span className="dlu-label">{t('session.new')}</span>
         {newShortcut && <span className="dlu-shortcut" aria-hidden="true">{newShortcut.keys.map((key,index) => <span key={index}>{key}</span>)}</span>}
       </Button></div>
+      {panels.length > 0 && <LayoutGroup id={`${groupId}-wide`}><nav className="dlu-panel-section" aria-label={t('panels.label')}>{panels.map(panel => <PanelRow key={panel.id} {...panel} wide usePanelInfo={usePanelInfo} selectPanel={selectPanel} renderSlot={renderSlot} />)}</nav></LayoutGroup>}
       <div className="dlu-workspaces">{workspaces}</div>
       <Appearance useTheme={props.useTheme} setTheme={props.setTheme} setTextSize={props.setTextSize} t={t} />
     </motion.div>}
