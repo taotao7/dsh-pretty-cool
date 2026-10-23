@@ -1,12 +1,30 @@
 {
   "format": 1,
-  "title": { "en": "DSH Pretty Cool", "zh": "DSH Pretty Cool" },
-  "description": { "en": "Author-maintained distribution index for DSH Pretty Cool. Not an official DSH catalog.", "zh": "DSH Pretty Cool 作者维护的分发索引，非 DSH 官方目录。" },
-  "metadata": { "categories": { "ui": { "title": { "en": "UI", "zh": "界面" } } } },
+  "title": {
+    "en": "DSH Pretty Cool",
+    "zh": "DSH Pretty Cool"
+  },
+  "description": {
+    "en": "Author-maintained distribution index for DSH Pretty Cool. Not an official DSH catalog.",
+    "zh": "DSH Pretty Cool 作者维护的分发索引，非 DSH 官方目录。"
+  },
+  "metadata": {
+    "categories": {
+      "ui": {
+        "title": {
+          "en": "UI",
+          "zh": "界面"
+        }
+      }
+    }
+  },
   "plugins": [
     {
       "name": "dsh-pretty-cool",
-      "title": { "en": "DSH Pretty Cool", "zh": "DSH Pretty Cool" },
+      "title": {
+        "en": "DSH Pretty Cool",
+        "zh": "DSH Pretty Cool"
+      },
       "description": {
         "en": "A carefully tuned compact interface: borderless messages, a light queue, context usage sitting on the composer line, and adjustable corners beside the theme controls. Native sessions, editor, tools and permissions stay connected.",
         "zh": "仔细收过的紧凑界面：普通消息和队列去掉厚边框，上下文占用嵌在输入框上沿，主题旁可调全局圆角。保留原生会话、编辑器、工具与权限。"
@@ -14,45 +32,106 @@
       "icon": "icon.svg",
       "author": "taotao7",
       "homepage": "https://github.com/taotao7/dsh-pretty-cool",
-      "repository": { "url": "https://github.com/taotao7/dsh-pretty-cool" },
-      "metadata": { "category": "ui", "keywords": ["dsh-plugin", "theme", "ui", "light", "dark"] },
-      "dist-tags": { "latest": "1.4.13" },
+      "repository": {
+        "url": "https://github.com/taotao7/dsh-pretty-cool"
+      },
+      "metadata": {
+        "category": "ui",
+        "keywords": [
+          "dsh-plugin",
+          "theme",
+          "ui",
+          "light",
+          "dark"
+        ]
+      },
+      "dist-tags": {
+        "latest": "1.4.14"
+      },
       "versions": [
+        {
+          "version": "1.4.14",
+          "publishTimestamp": 1792763127,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/taotao7/dsh-pretty-cool",
+            "commit": "8f4afaf3c15801feabcae8dc5003895c1260fd03"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.2"
+          }
+        },
         {
           "version": "1.4.13",
           "publishTimestamp": 1792762189,
-          "source": { "type": "git", "url": "https://github.com/taotao7/dsh-pretty-cool", "commit": "63d68904ff82f0f947eb02a4d4aebb3e40f37327" },
-          "engines": { "dsh": "0.2.1-rc.2" }
+          "source": {
+            "type": "git",
+            "url": "https://github.com/taotao7/dsh-pretty-cool",
+            "commit": "63d68904ff82f0f947eb02a4d4aebb3e40f37327"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.2"
+          }
         },
         {
           "version": "1.4.12",
           "publishTimestamp": 1792760460,
-          "source": { "type": "git", "url": "https://github.com/taotao7/dsh-pretty-cool", "commit": "e29b7d3d912e1086ab237aee9b07080db9d60338" },
-          "engines": { "dsh": "0.2.1-rc.2" }
+          "source": {
+            "type": "git",
+            "url": "https://github.com/taotao7/dsh-pretty-cool",
+            "commit": "e29b7d3d912e1086ab237aee9b07080db9d60338"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.2"
+          }
         },
         {
           "version": "1.4.11",
           "publishTimestamp": 1792758484,
-          "source": { "type": "git", "url": "https://github.com/taotao7/dsh-pretty-cool", "commit": "a1bea8597ecb45d4cdcb3747dbf1d232d2f74462" },
-          "engines": { "dsh": "0.2.1-rc.2" }
+          "source": {
+            "type": "git",
+            "url": "https://github.com/taotao7/dsh-pretty-cool",
+            "commit": "a1bea8597ecb45d4cdcb3747dbf1d232d2f74462"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.2"
+          }
         },
         {
           "version": "1.4.10",
           "publishTimestamp": 1792757884,
-          "source": { "type": "git", "url": "https://github.com/taotao7/dsh-pretty-cool", "commit": "5fb277b0ad8d57151e3cc44ac5ce62cd87d25811" },
-          "engines": { "dsh": "0.2.1-rc.2" }
+          "source": {
+            "type": "git",
+            "url": "https://github.com/taotao7/dsh-pretty-cool",
+            "commit": "5fb277b0ad8d57151e3cc44ac5ce62cd87d25811"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.2"
+          }
         },
         {
           "version": "1.4.9",
           "publishTimestamp": 1792756384,
-          "source": { "type": "git", "url": "https://github.com/taotao7/dsh-pretty-cool", "commit": "490aad6e13b680d6404d2e93078f14075d468dca" },
-          "engines": { "dsh": "0.2.1-rc.2" }
+          "source": {
+            "type": "git",
+            "url": "https://github.com/taotao7/dsh-pretty-cool",
+            "commit": "490aad6e13b680d6404d2e93078f14075d468dca"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.2"
+          }
         },
         {
           "version": "1.4.4",
           "publishTimestamp": 1792753144,
-          "source": { "type": "git", "url": "https://github.com/taotao7/dsh-pretty-cool", "commit": "bfd85a741ee81680f9646927596297547b408210" },
-          "engines": { "dsh": "0.2.1-rc.2" }
+          "source": {
+            "type": "git",
+            "url": "https://github.com/taotao7/dsh-pretty-cool",
+            "commit": "bfd85a741ee81680f9646927596297547b408210"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.2"
+          }
         }
       ]
     }
