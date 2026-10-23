@@ -6,7 +6,9 @@ header:has(.dlu-header-marker) [data-conversation-tabs] button {padding:0 2px;fo
 header:has(.dlu-header-marker) div:has(> [data-conversation-header-corner]) {min-height:38px;container-type:normal;}
 header:has(.dlu-header-marker) nav {font-size:12px;}
 header:has(.dlu-header-marker) nav > span > span {font-size:12px;}
-[data-composer-seat]:has(.dlu-model-menu) {z-index:40!important;}
+[data-composer-seat]:has(.dlu-model-menu),
+[data-composer-seat]:has([data-composer-dock] > span > [role=tooltip]),
+[data-composer-seat]:has([data-composer-dock] > span > button[aria-expanded=true]) {z-index:40!important;}
 .dlu-status-rail {display:none;pointer-events:none;}
 .dlu-prompt-directory {display:inline-flex;align-items:center;gap:6px;min-width:0;max-width:240px;color:var(--dsw-alias-label-secondary);font-size:12px;line-height:20px;grid-column:1;}
 .dlu-prompt-directory svg {flex:none;}
@@ -27,8 +29,10 @@ div:has(> [data-composer-card]):has(.dlu-context-line) {position:relative;border
 [data-composer-stat] button {border-radius:5px;color:var(--dsw-alias-label-secondary);}
 [data-composer-stat=activity] button {color:var(--dsw-alias-label-tertiary);}
 [data-composer-stat] button:hover,[data-composer-stat] button[aria-expanded=true] {color:var(--dsw-alias-label-primary);background:var(--dsw-alias-bg-layer-2);}
-[data-composer-dock]:has(.dlu-prompt-directory) > span:has(> button[aria-haspopup=dialog]) {position:absolute;top:-11px;right:12px;margin:0;padding:0 5px;background:var(--dsw-specific-input-major);border-radius:5px;}
-[data-composer-dock]:has(.dlu-prompt-directory) > span > button {min-height:20px;height:20px;font-size:11px;}
+[data-composer-dock]:has(.dlu-prompt-directory) > span:has(> button[aria-haspopup=dialog]) {position:absolute;top:-23px;right:12px;margin:0;padding:0;background:transparent;border-radius:0;}
+[data-composer-dock]:has(.dlu-prompt-directory) > span > button {min-height:20px;height:20px;font-size:11px;background:transparent;}
+[data-composer-dock]:has(.dlu-prompt-directory) > span > button:hover,
+[data-composer-dock]:has(.dlu-prompt-directory) > span > button[aria-expanded=true] {background:transparent;color:var(--dsw-alias-label-primary);}
 div:has(> [data-composer-card]):has(.dlu-context-line):focus-within {border-color:var(--dsw-alias-border-l2);box-shadow:0 0 0 1px color-mix(in srgb,var(--dsw-alias-brand-primary) 10%,transparent);}
 [data-testid=todo-panel] {background:transparent;box-shadow:none;backdrop-filter:none;border-radius:4px;}
 [data-testid=todo-panel] > div {padding:0 6px;gap:4px;}
@@ -58,7 +62,7 @@ div:has(> [data-composer-card]):has(.dlu-context-line):focus-within {border-colo
   div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) [data-testid=todo-panel] {grid-column:1;grid-row:2;width:100%;max-width:none;margin:0;align-self:center;}
   div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) [data-goal-bar] {grid-column:1 / -1;grid-row:1;width:100%;max-width:none;margin:0;}
   div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) [data-queue-dock] {grid-column:1 / -1;grid-row:3;}
-  div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) div:has(> [data-composer-card]) {grid-column:1 / -1;grid-row:4;order:100;width:100%;margin-top:12px;margin-bottom:8px;}
+  div:has(> [data-slot="conversation.header"]) div:has(> div > .dlu-status-rail) div:has(> [data-composer-card]) {grid-column:1 / -1;grid-row:4;order:100;width:100%;margin-top:24px;margin-bottom:8px;}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] {position:fixed;position-anchor:--dlu-status;top:anchor(top);right:anchor(right);position-visibility:anchors-visible;display:flex!important;align-items:center;justify-content:flex-end;gap:5px;z-index:30;min-height:32px;}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label] {position:relative;box-sizing:border-box;width:32px;min-width:32px;height:32px;min-height:32px;justify-content:center;gap:0;padding:5px;border:1px solid transparent;border-radius:7px;font-size:0;color:var(--dsw-alias-label-secondary);}
   header:has(.dlu-header-marker) [data-slot="conversation.session.header.actions"] button[aria-label]:hover {color:var(--dsw-alias-label-primary);background:var(--dsw-alias-bg-layer-2);}

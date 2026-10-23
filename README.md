@@ -25,10 +25,10 @@
 
 ## 安装
 
-1. 从 [Releases](https://github.com/taotao7/dsh-pretty-cool/releases/latest) 下载 `local-dsh-linear-ui-1.4.2.tgz`。
+1. 从 [Releases](https://github.com/taotao7/dsh-pretty-cool/releases/latest) 下载 `local-dsh-linear-ui-1.4.3.tgz`。
 2. 在 DSH 中让助手安装下载的本地文件：
 
-   > 请安装这个 UI bundle：`/绝对路径/local-dsh-linear-ui-1.4.2.tgz`
+   > 请安装这个 UI bundle：`/绝对路径/local-dsh-linear-ui-1.4.3.tgz`
 
 升级时先卸载旧版再安装；还原原生界面时，禁用或卸载整个 `@local/dsh-linear-ui` bundle。不会修改官方安装文件。
 
