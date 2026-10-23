@@ -16,7 +16,8 @@ for (const language of ['en','zh']) {
 const icon = await readFile(new URL('icon.svg', root), 'utf8');
 assert(icon.startsWith('<svg') && icon.includes('viewBox="0 0 64 64"') && Buffer.byteLength(icon) < 262144);
 const artifact = await readFile(new URL('dist/client.js', root), 'utf8');
-assert(artifact.startsWith("window.__ModuleLoader__.load({id:'dsh-pretty-cool'"));
+assert(artifact.includes(`window.__ModuleLoader__.load({id:${JSON.stringify(manifest.name)}`));
+assert(artifact.includes(`window.__ModuleLoader__.load({id:${JSON.stringify('@local/dsh-linear-ui')}`));
 assert(!/REACTBITS_LICENSE_KEY|proxy\.collectui\.pro/.test(artifact), 'no secret references');
 for (const file of ['client.ts','sidebar.tsx','chat.tsx','primitives.tsx','composer.tsx','composer-model.ts']) {
   const source = await readFile(new URL(`src/${file}`, root), 'utf8');

@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const result = await build({
@@ -10,7 +10,13 @@ const result = await build({
   define: { 'process.env.NODE_ENV': '"production"' },
 });
 const code = result.outputFiles[0].text;
-const artifact = `window.__ModuleLoader__.load({id:'dsh-pretty-cool',factory(require){const module={exports:{}};const exports=module.exports;\n${code}\nreturn module.exports;}});\n`;
+const manifest = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+if (typeof manifest.name !== 'string' || !manifest.name) throw new Error('package.json name is required for client registration');
+// The web profile still mounts the pre-rename package. The host keys the factory
+// by that package name, so the same client must register both identities.
+const registrationIds = [...new Set([manifest.name, '@local/dsh-linear-ui'])];
+const calls = registrationIds.map((id) => `window.__ModuleLoader__.load({id:${JSON.stringify(id)},factory});`).join('');
+const artifact = `function factory(require){const module={exports:{}};const exports=module.exports;\n${code}\nreturn module.exports;}${calls}\n`;
 const inputs = Object.keys(result.metafile.inputs);
 if (inputs.some(p => /node_modules\/(?:react|react-dom)\//.test(p))) throw new Error('Duplicate React runtime');
 if (inputs.some(p => p.includes('@deepseek-ai/dsh-client'))) throw new Error('Forbidden Harness implementation import');
