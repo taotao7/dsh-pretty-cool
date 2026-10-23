@@ -11,7 +11,7 @@ Visual primitives adapted from the user's authorized installed sources:
 - `../src/components/blocks/app-shell-1.tsx`: compact navigation row geometry, restrained surfaces, type scale, keyboard focus treatment.
 - `../src/components/blocks/prompt-input-1.tsx`: ghost/secondary control treatment, 120 ms easing and press feedback.
 
-The source was previously installed through the user's licensed ReactBits registry. This package uses scoped CSS and Motion in place of the demo's Tailwind classes and demo state. No freight records, chat responses, fake streaming or sample metrics are included. Premium source remains subject to the user's ReactBits license; this private integration grants no separate resale or redistribution rights. No registry credentials are included.
+The source was previously installed through the user's licensed ReactBits registry. This package uses scoped CSS and Motion in place of the demo's Tailwind classes and demo state. The distributed bundle is a DSH-specific application integration; it does not ship the original premium blocks, demo application, registry, or a reusable ReactBits component library. No freight records, chat responses, fake streaming or sample metrics are included. ReactBits Pro remains subject to its own [license](https://pro.reactbits.dev/license), including Sections 2.3 (Output) and 2.4 (Prohibited Use); this project grants no separate rights to redistribute that Product. No registry credentials are included.
 
 ## Pixel-Perfect
 
