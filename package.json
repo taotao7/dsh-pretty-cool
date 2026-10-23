@@ -1,6 +1,6 @@
 {
   "name": "dsh-pretty-cool",
-  "version": "1.4.14",
+  "version": "1.4.15",
   "type": "module",
   "description": "An OMP-inspired prompt-centered interface for every DSH workspace and session, with native statistics and one-click thinking levels.",
   "exports": {
