@@ -29,8 +29,8 @@ div:has(> [data-composer-card]):has(.dlu-context-line)::before {content:'';posit
 [data-composer-stat] button {max-width:100%;}
 [data-composer-stat] button > span {min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 [data-composer-dock] button {font-size:11px;}
-[data-composer-stat] button {border-radius:calc(5px * var(--dlu-radius-scale,1));color:var(--dsw-alias-label-secondary);}
-[data-composer-stat=activity] button {color:var(--dsw-alias-label-tertiary);}
+[data-composer-stat] button {border-radius:calc(5px * var(--dlu-radius-scale,1));color:var(--dsw-alias-label-primary-dimmed);}
+[data-composer-stat=activity] button {color:var(--dsw-alias-label-secondary);}
 [data-composer-stat] button:hover,[data-composer-stat] button[aria-expanded=true] {color:var(--dsw-alias-label-primary);background:var(--dsw-alias-bg-layer-2);}
 [data-composer-dock]:has(.dlu-prompt-directory) > span:has(> button[aria-haspopup=dialog]) {position:absolute;top:-10px;right:12px;width:72px;margin:0;padding:0;background:transparent;border-radius:0;}
 [data-composer-dock]:has(.dlu-prompt-directory) > span > button {min-height:20px;height:20px;font-size:11px;background:transparent;}
