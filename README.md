@@ -27,22 +27,23 @@
 
 ## 安装
 
-使用 DSH 官方的 profile 插件命令，直接安装钉住的预构建版本：
+使用 DSH 官方的 profile 插件命令，直接从 npm 安装：
 
 ```sh
-dsh plugin --profile web add github:taotao7/dsh-pretty-cool#a1bea8597ecb45d4cdcb3747dbf1d232d2f74462
+dsh plugin --profile web add dsh-pretty-cool
 ```
 
-也可以从 [Releases](https://github.com/taotao7/dsh-pretty-cool/releases/latest) 下载 `local-dsh-linear-ui-1.4.11.tgz`，再安装本地包：
-
-```sh
-dsh plugin --profile web add /绝对路径/local-dsh-linear-ui-1.4.11.tgz
-```
-
-其他 profile 把 `web` 换成对应名称。升级时先移除旧版再安装：
+其他 profile 把 `web` 换成对应名称。已安装旧版 `@local/dsh-linear-ui` 时，先移除再安装新包名：
 
 ```sh
 dsh plugin --profile web remove @local/dsh-linear-ui
+dsh plugin --profile web add dsh-pretty-cool
+```
+
+恢复原生界面：
+
+```sh
+dsh plugin --profile web remove dsh-pretty-cool
 ```
 
 禁用或卸载整个 bundle 即恢复原生界面，不会修改官方安装文件。其他插件注册的侧栏入口仍会显示在会话列表上方。

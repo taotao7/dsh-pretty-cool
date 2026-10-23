@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { join, resolve } from 'node:path';
 const root = new URL('../', import.meta.url);
 const manifest = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
-assert.equal(manifest.name, '@local/dsh-linear-ui');
+assert.equal(manifest.name, 'dsh-pretty-cool');
 assert.equal(manifest.dsh.bundle.patch, './cordis.patch.yml');
 assert.equal(manifest.dsh.client.platform, 'web');
 assert(!manifest.scripts?.postinstall && !manifest.scripts?.install, 'no installation scripts');
@@ -16,7 +16,7 @@ for (const language of ['en','zh']) {
 const icon = await readFile(new URL('icon.svg', root), 'utf8');
 assert(icon.startsWith('<svg') && icon.includes('viewBox="0 0 64 64"') && Buffer.byteLength(icon) < 262144);
 const artifact = await readFile(new URL('dist/client.js', root), 'utf8');
-assert(artifact.startsWith("window.__ModuleLoader__.load({id:'@local/dsh-linear-ui'"));
+assert(artifact.startsWith("window.__ModuleLoader__.load({id:'dsh-pretty-cool'"));
 assert(!/REACTBITS_LICENSE_KEY|proxy\.collectui\.pro/.test(artifact), 'no secret references');
 for (const file of ['client.ts','sidebar.tsx','chat.tsx','primitives.tsx','composer.tsx','composer-model.ts']) {
   const source = await readFile(new URL(`src/${file}`, root), 'utf8');

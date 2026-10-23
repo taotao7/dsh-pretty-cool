@@ -5,7 +5,7 @@
   "metadata": { "categories": { "ui": { "title": { "en": "UI", "zh": "界面" } } } },
   "plugins": [
     {
-      "name": "@local/dsh-linear-ui",
+      "name": "dsh-pretty-cool",
       "title": { "en": "DSH Pretty Cool", "zh": "DSH Pretty Cool" },
       "description": {
         "en": "A carefully tuned compact interface: borderless messages, a light queue, context usage sitting on the composer line, and adjustable corners beside the theme controls. Native sessions, editor, tools and permissions stay connected.",

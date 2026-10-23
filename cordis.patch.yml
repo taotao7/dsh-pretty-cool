@@ -5,4 +5,4 @@
   disabled: true
 - insert:
     - id: linear-ui
-      name: '@local/dsh-linear-ui'
+      name: 'dsh-pretty-cool'

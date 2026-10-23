@@ -13,7 +13,7 @@ export function apply(ctx: ClientContext) {
       ? { light:`calc(${value.light} * var(--dlu-radius-scale, 1))`, dark:`calc(${value.dark} * var(--dlu-radius-scale, 1))` }
       : value,
   ]));
-  ctx.effect(() => ctx.theme.overrideTokens('@local/dsh-linear-ui', scalableTokens), 'linear-ui: theme');
+  ctx.effect(() => ctx.theme.overrideTokens('dsh-pretty-cool', scalableTokens), 'linear-ui: theme');
   ctx.slots.inject('shell.overlay', () => ctx.slots.register({ name:'shell.overlay', id:'linear-ui.radius-styles' }, RadiusStyles));
   registerSidebar(ctx);
   registerChatLeaves(ctx);

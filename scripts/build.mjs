@@ -10,7 +10,7 @@ const result = await build({
   define: { 'process.env.NODE_ENV': '"production"' },
 });
 const code = result.outputFiles[0].text;
-const artifact = `window.__ModuleLoader__.load({id:'@local/dsh-linear-ui',factory(require){const module={exports:{}};const exports=module.exports;\n${code}\nreturn module.exports;}});\n`;
+const artifact = `window.__ModuleLoader__.load({id:'dsh-pretty-cool',factory(require){const module={exports:{}};const exports=module.exports;\n${code}\nreturn module.exports;}});\n`;
 const inputs = Object.keys(result.metafile.inputs);
 if (inputs.some(p => /node_modules\/(?:react|react-dom)\//.test(p))) throw new Error('Duplicate React runtime');
 if (inputs.some(p => p.includes('@deepseek-ai/dsh-client'))) throw new Error('Forbidden Harness implementation import');
