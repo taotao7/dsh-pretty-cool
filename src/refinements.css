@@ -26,7 +26,8 @@ body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningContent"]
 body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningIcon"] {width:16px;height:16px;color:var(--dsw-alias-brand-primary);}
 body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningWhaleAnimated"] {display:none;}
 body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningWhaleStill"] {display:block;width:16px;height:16px;}
-body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningText"] {animation:none;background:none;color:var(--dsw-alias-label-secondary);-webkit-text-fill-color:currentColor;font-size:12px;line-height:20px;}
+body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningText"] {position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;animation:none;background:none;color:transparent;-webkit-text-fill-color:transparent;}
+body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningContent"]::before {content:attr(data-dlu-duration);color:var(--dsw-alias-label-secondary);font:12px/20px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;white-space:nowrap;}
 body:has(.dlu-header-marker) [data-chat-running=true] [class$="_runningContent"]::after {content:"";flex:none;width:3px;height:3px;margin-inline:2px 12px;border-radius:50%;color:var(--dsw-alias-brand-primary);background:currentColor;box-shadow:6px 0 currentColor,12px 0 currentColor;opacity:.65;pointer-events:none;}
 @keyframes dlu-thinking-dots {
   0%,100% {background:currentColor;box-shadow:6px 0 color-mix(in srgb,currentColor 25%,transparent),12px 0 color-mix(in srgb,currentColor 25%,transparent);}

@@ -18,6 +18,22 @@ const dictionaries={
 };
 function HeaderMarker(){return <span className="dlu-header-marker" hidden/>;}
 function ActivitySeat(){return <div className="dlu-status-rail" aria-hidden="true"/>;}
+function RunningTime(){
+  React.useEffect(()=>{
+    const sync=()=>{
+      for (const node of Array.from(document.querySelectorAll('[data-chat-running=true] [class$="_runningContent"]'))) {
+        const text=node.querySelector('[class$="_runningText"]')?.textContent??'';
+        const duration=text.match(/(\d+\s*[a-z\u4e00-\u9fff]+(?:\s+\d+\s*[a-z\u4e00-\u9fff]+)?)\s*$/i)?.[1]??'';
+        if (node.getAttribute('data-dlu-duration')!==duration) node.setAttribute('data-dlu-duration',duration);
+      }
+    };
+    sync();
+    const observer=new MutationObserver(sync);
+    observer.observe(document.body,{childList:true,subtree:true,characterData:true});
+    return ()=>observer.disconnect();
+  },[]);
+  return null;
+}
 function PromptContext({sessionId,useSessions,useProjection,t}:ContextProps){
   const cwd=useSessions(s=>s.byId[sessionId]?.cwd);
   const pressure=useProjection('contextPressure');
@@ -38,6 +54,7 @@ function Styles(){return <style>{css+'\n'+refinements}</style>;}
 export function registerDashboard(ctx:ClientContext){
   ctx.effect(()=>ctx.locale.register(NS,dictionaries),'linear-ui: dashboard locale');
   ctx.slots.inject('shell.overlay',()=>ctx.slots.register({name:'shell.overlay',id:'linear-ui.dashboard-styles'},Styles));
+  ctx.slots.inject('shell.overlay',()=>ctx.slots.register({name:'shell.overlay',id:'linear-ui.running-time'},RunningTime));
   ctx.slots.inject('conversation.session.header.actions',()=>ctx.slots.register({name:'conversation.session.header.actions',id:'linear-ui.header-marker',order:1000},HeaderMarker));
   ctx.slots.inject('conversation.input.dock',()=>ctx.slots.register({name:'conversation.input.dock',id:'linear-ui.status-seat',order:30},ActivitySeat));
   ctx.slots.inject('conversation.composer.dock',()=>ctx.slots.register({name:'conversation.composer.dock',id:'linear-ui.context',order:-10,locale:NS},PromptContext));
