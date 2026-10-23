@@ -1,0 +1,8 @@
+node_modules/
+dist/
+evidence/
+*.tgz
+VERIFICATION.md
+.env*
+.npmrc
+.DS_Store

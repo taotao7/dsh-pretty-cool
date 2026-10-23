@@ -1,0 +1,18 @@
+{
+  "name": "@local/dsh-linear-ui",
+  "version": "1.4.2",
+  "private": true,
+  "type": "module",
+  "description": "An OMP-inspired prompt-centered interface for every DSH workspace and session, with native statistics and one-click thinking levels.",
+  "exports": { ".": "./index.js", "./client": "./dist/client.js", "./locale/*.json": "./locale/*.json", "./icon": "./icon.svg" },
+  "files": ["index.js", "dist/client.js", "cordis.patch.yml", "locale/", "icon.svg", "README.md", "docs/screenshots/", "THIRD_PARTY_NOTICES.md"],
+  "repository": { "type": "git", "url": "git+https://github.com/taotao7/dsh-pretty-cool.git" },
+  "license": "UNLICENSED",
+  "engines": { "dsh": "0.2.1-rc.2" },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": { "platform": "web", "immediately": true, "inject": ["@deepseek-ai/dsh-client-ui-theme", "@deepseek-ai/dsh-client-ui-workspace", "@deepseek-ai/dsh-client-ui-conversation", "@deepseek-ai/dsh-client-ui-chat", "@deepseek-ai/dsh-client-ui-model-selection"] }
+  },
+  "scripts": { "build": "node scripts/build.mjs", "check": "tsc --noEmit", "test": "node --test scripts/effort.test.mjs", "verify": "node scripts/verify.mjs" },
+  "devDependencies": { "@types/react": "^19.0.0", "esbuild": "^0.25.0", "typescript": "^5.9.0", "react": "^19.0.0", "motion": "14.6.0" }
+}

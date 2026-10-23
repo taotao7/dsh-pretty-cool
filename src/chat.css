@@ -1,0 +1,34 @@
+/* Own surfaces only; native child markup and editor remain untouched. */
+.dlu-user-card {--dsw-specific-bubble:transparent;box-sizing:border-box;width:100%;min-width:0;max-width:100%;margin:14px 0 18px;padding:0;border:0;border-radius:0;background:transparent;color:var(--dsw-alias-label-primary);}
+.dlu-user-card > div {width:100%;max-width:100%;align-self:stretch;align-items:flex-start;justify-items:start;text-align:start;}
+.dlu-user-card > div > div {align-self:flex-start;margin-inline:0;padding:0;border:0;border-radius:0;background:transparent;}
+.dlu-user-card .dlu-message-action {margin-inline-start:auto;opacity:0;}
+.dlu-user-card:hover .dlu-message-action,.dlu-user-card:focus-within .dlu-message-action {opacity:1;}
+@media(hover:none) {.dlu-user-card .dlu-message-action {opacity:1;}}
+.dlu-message-header {display:flex;align-items:center;gap:6px;min-height:20px;padding:0 0 5px;font:500 11px/16px var(--dsw-font-family);color:var(--dsw-alias-label-secondary);}
+.dlu-message-header > strong {font-weight:550;color:var(--dsw-alias-label-primary);}
+.dlu-user-avatar {display:inline-flex;align-items:center;justify-content:center;flex:none;width:14px;height:14px;color:var(--dsw-alias-brand-primary);}
+.dlu-message-header > time {margin-inline-start:6px;font:10px/16px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.dlu-message-action {border:1px solid transparent;border-radius:3px;padding:2px 5px;font:inherit;font-size:10px;color:var(--dsw-alias-label-secondary);background:transparent;cursor:pointer;transition:background-color 120ms,color 120ms;}
+.dlu-message-action:hover {color:var(--dsw-alias-label-primary);background:var(--dsw-alias-interactive-bg-hover);}
+.dlu-message-action:focus-visible,.dlu-process-card:focus-visible {outline:2px solid var(--dsw-alias-brand-primary);outline-offset:3px;}
+.dlu-process-card {display:flex;align-items:center;gap:9px;box-sizing:border-box;width:100%;min-height:42px;margin:10px 0 14px;padding:8px 10px;border:1px solid var(--dsw-alias-border-l1);border-radius:4px;background:transparent;color:var(--dsw-alias-label-secondary);font-family:var(--dsw-font-family);text-align:start;cursor:pointer;transition:border-color 150ms,background-color 150ms;}
+.dlu-process-card:not(:disabled):hover {border-color:var(--dsw-alias-border-l2);background:var(--dsw-alias-interactive-bg-hover);}
+.dlu-process-card:disabled {cursor:default;}
+.dlu-process-icon {display:flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;color:var(--dsw-alias-brand-primary);}
+.dlu-process-info {display:flex;align-items:baseline;flex-wrap:wrap;gap:3px 12px;min-width:0;flex:1;}
+.dlu-process-info > strong {font-size:11px;font-weight:500;line-height:16px;color:var(--dsw-alias-label-primary);white-space:nowrap;}
+.dlu-process-counts {display:flex;flex-wrap:wrap;gap:3px 10px;min-width:0;font:10px/16px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;}
+.dlu-process-counts > span {white-space:nowrap;}
+.dlu-process-counts b {font-weight:500;color:var(--dsw-alias-label-primary);}
+.dlu-process-duration {flex:none;font:10px/16px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.dlu-process-card[data-state=error] .dlu-process-icon {color:var(--dsw-alias-state-error-primary);}
+.dlu-process-card[data-state=stopped] .dlu-process-icon {color:var(--dsw-alias-state-warn-primary);}
+.dlu-reasoning {border-inline-start:1px solid var(--dsw-alias-border-l2);padding:3px 12px;margin:10px 0 14px;min-width:0;}
+.dlu-reasoning-label {display:flex;align-items:center;gap:6px;margin-bottom:7px;color:var(--dsw-alias-label-secondary);font:500 10px/16px var(--dsw-font-family);}
+.dlu-reasoning-dot {height:4px;width:4px;border-radius:50%;background:var(--dsw-alias-brand-primary);}
+.dlu-sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.dlu-images {min-width:0;}
+@media(max-width:600px) {.dlu-user-card {padding:0;}.dlu-process-card {padding:8px;gap:7px;}.dlu-process-info {gap:2px 8px;}.dlu-process-counts {gap:2px 8px;}.dlu-process-duration {display:none;}}
+@media(pointer:coarse) {.dlu-message-action {min-height:32px;padding-inline:8px;}}
+@media(prefers-reduced-motion:reduce) {.dlu-message-action,.dlu-process-card {transition:none;}}

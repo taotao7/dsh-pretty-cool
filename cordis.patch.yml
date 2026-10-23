@@ -1,0 +1,8 @@
+# The sidebar's seven child declarations are exclusive.
+# Removing/disabling this entire bundle restores the shipped row.
+- id: ui-sidebar
+  name: '@deepseek-ai/dsh-client-ui-sidebar'
+  disabled: true
+- insert:
+    - id: linear-ui
+      name: '@local/dsh-linear-ui'
