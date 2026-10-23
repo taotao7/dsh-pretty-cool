@@ -16,8 +16,14 @@
       "homepage": "https://github.com/taotao7/dsh-pretty-cool",
       "repository": { "url": "https://github.com/taotao7/dsh-pretty-cool" },
       "metadata": { "category": "ui", "keywords": ["dsh-plugin", "theme", "ui", "light", "dark"] },
-      "dist-tags": { "latest": "1.4.11" },
+      "dist-tags": { "latest": "1.4.12" },
       "versions": [
+        {
+          "version": "1.4.12",
+          "publishTimestamp": 1792760460,
+          "source": { "type": "git", "url": "https://github.com/taotao7/dsh-pretty-cool", "commit": "e29b7d3d912e1086ab237aee9b07080db9d60338" },
+          "engines": { "dsh": "0.2.1-rc.2" }
+        },
         {
           "version": "1.4.11",
           "publishTimestamp": 1792758484,
